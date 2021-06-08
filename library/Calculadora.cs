@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace library
 {
@@ -24,6 +25,17 @@ namespace library
            if(num2==0) return 0;
 
            return num1/num2;
+        }
+
+        public int[] GetPares()
+        {
+            List<int> pares = new List<int>();
+            for (int i = 1; i < 1000; i++)
+            {
+                if(i%2 == 0) pares.Add(i);
+            }
+
+            return pares.ToArray();
         }
     }
 }

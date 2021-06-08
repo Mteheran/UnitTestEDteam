@@ -90,5 +90,25 @@ namespace tests
             //Assert
             Assert.Equal(0, result);
         }
+
+        [Fact]
+        public void ParesArray()
+        {
+            Calculadora cal = new Calculadora();            
+            
+            int[] result = cal.GetPares();
+
+            Assert.DoesNotContain(3, result);
+        }
+
+        [Fact]
+        public void ParesArray_ContainsPar()
+        {
+            Calculadora cal = new Calculadora();            
+            
+            int[] result = cal.GetPares();
+
+            Assert.Contains(2, result);
+        }
     }
 }
