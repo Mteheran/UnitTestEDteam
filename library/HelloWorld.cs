@@ -9,7 +9,7 @@ namespace library
     {
         public string GetHelloWorld()
         {
-            return "Hello World!!!!!";
+            return "Hello World!!!!";
         }
 
         public bool EsMayorDeEdad(int edad)

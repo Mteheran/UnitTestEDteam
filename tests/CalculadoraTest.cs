@@ -91,24 +91,32 @@ namespace tests
             Assert.Equal(0, result);
         }
 
-        [Fact]
-        public void ParesArray()
+        [Theory]
+        [ClassData(typeof(TestParesClassData))]
+        public void ParesArray(int numImpar)
         {
             Calculadora cal = new Calculadora();            
             
             int[] result = cal.GetPares();
 
-            Assert.DoesNotContain(3, result);
+            Assert.DoesNotContain(numImpar, result);
         }
 
-        [Fact]
-        public void ParesArray_ContainsPar()
+        [Theory]
+        [InlineData(2)]
+        [InlineData(4)]
+        [InlineData(8)]
+        [InlineData(10)]
+        [InlineData(20)]
+        [InlineData(800)]
+        [InlineData(940)]
+        public void ParesArray_ContainsPar(int numPar)
         {
             Calculadora cal = new Calculadora();            
             
             int[] result = cal.GetPares();
 
-            Assert.Contains(2, result);
+            Assert.Contains(numPar, result);
         }
     }
 }

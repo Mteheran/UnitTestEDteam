@@ -9,10 +9,15 @@ namespace tests
 {
     public class HelloWorldTest
     {
+        readonly HelloWorld hello;
+        public HelloWorldTest()
+        {
+            hello = new HelloWorld();
+        }
+
         [Fact]
         public void GetMessageHelloWorld()
         {
-            HelloWorld hello = new HelloWorld();
             string result = "";
 
             result = hello.GetHelloWorld();
@@ -25,7 +30,6 @@ namespace tests
         [Fact]
         public void GetMessageHelloWorld_Ends()
         {
-            HelloWorld hello = new HelloWorld();
             string result = "";
 
             result = hello.GetHelloWorld();
@@ -36,7 +40,6 @@ namespace tests
         [Fact]
         public void EsMayordeEdad_True()
         {
-            HelloWorld hello = new HelloWorld();
             bool result = false;
 
             result = hello.EsMayorDeEdad(20);
@@ -48,13 +51,11 @@ namespace tests
         [Fact]
         public void EsMayordeEdad_False()
         {
-            HelloWorld hello = new HelloWorld();
             bool result = false;
 
             result = hello.EsMayorDeEdad(15);
 
             Assert.False(result);
-
         }
     }
 }
