@@ -6,6 +6,8 @@ using Xunit;
 using Api;
 using Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace tests
 {
@@ -14,7 +16,9 @@ namespace tests
         [Fact]
         public void GetWeatherForecast()
         {
-            var controller  =  new WeatherForecastController();
+            var loggerMock  = new Mock<ILogger<WeatherForecastController>>();
+           
+            var controller = new WeatherForecastController(loggerMock.Object);
 
             var result  =  controller.Get();
 
@@ -25,7 +29,11 @@ namespace tests
         [Fact]
         public void GetWeatherForecast_ItemValues()
         {
-            var controller  =  new WeatherForecastController();
+            var loggerMock  = new Mock<ILogger<WeatherForecastController>>();
+
+            loggerMock.SetupAllProperties();
+
+            var controller  =  new WeatherForecastController(loggerMock.Object);
 
             var result  =  controller.Get().ToList()[0];
 
