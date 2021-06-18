@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Api;
+using Api.Controllers;
 using Xunit;
 
 namespace tests
@@ -51,6 +52,17 @@ namespace tests
             Assert.Equal("User updated", listResult.ToList()[0].Name);
         }
         
-        
+         [Fact]
+        public void UserDelete()
+        {
+            using var apiContext = ApiContextTest.GetApiAppContext();
+            var userController = new UserController(apiContext);
+
+            var firstElement = userController.Get().ToList()[0];
+            var result = userController.Delete(firstElement.UserId.ToString());
+            var userlist = userController.Get();
+
+            Assert.Equal(2, userlist.Count());
+        }
     }
 }
