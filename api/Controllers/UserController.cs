@@ -24,6 +24,7 @@ namespace Api.Controllers
             return apiContext.Users.Where(p=> p.Active).ToList();
         }
 
+        [Obsolete]
         [HttpGet("{id}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
